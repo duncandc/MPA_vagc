@@ -3,7 +3,7 @@
 #Author: Duncan Campbell
 #Written: July 9, 2013
 #Yale University
-#Description: Read in fits group catalogues and save as HDF5 files.
+#Description: Read in fits mpa catalogues and save as HDF5 files.
 
 ###packages###
 import numpy as np
