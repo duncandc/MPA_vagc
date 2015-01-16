@@ -63,16 +63,14 @@ def main():
     print "reading total stellar mass catalogue now."
     
     filename = catalogues[2]
-    hdulist2 = fits.open(filepath+filename, memmap=True)
-    data2 = hdulist2[1].data
+    hdulist1 = fits.open(filepath+filename, memmap=True)
+    data1 = hdulist2[1].data
     print 'saving as:', savepath+filename[:-5]+'.hdf5'
-    f2 = h5py.File(savepath+filename[:-5]+'.hdf5', 'w')
-    dset2 = f2.create_dataset(filename[:-5], data=data2)
+    f1 = h5py.File(savepath+filename[:-5]+'.hdf5', 'w')
+    dset1 = f1.create_dataset(filename[:-5], data=data2)
 
     dtype1 = dset1.dtype.descr
     dtype2 = dset2.dtype.descr
-    print dtype1
-    print dtype2
     
     dtype3 = dtype2+dtype1
     dtype3 = np.dtype(dtype3)
