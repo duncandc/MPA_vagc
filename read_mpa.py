@@ -58,6 +58,37 @@ def main():
     print savepath+filename+'.hdf5'
     f3 = h5py.File(savepath+filename+'.hdf5', 'w')
     dset3 = f3.create_dataset(filename, data=data3)
+    
+    
+    filename = catalogues[2]
+    hdulist2 = fits.open(filepath+filename, memmap=True)
+    data2 = hdulist2[1].data
+    print 'saving as:', savepath+filename[:-5]+'.hdf5'
+    f2 = h5py.File(savepath+filename[:-5]+'.hdf5', 'w')
+    dset2 = f2.create_dataset(filename[:-5], data=data2)
+
+    dtype1 = dset1.dtype.descr
+    dtype2 = dset2.dtype.descr
+    
+    dtype3 = dtype2+dtype1
+    dtype3 = np.dtype(dtype3)
+
+    print dtype3
+
+    data3 = np.recarray((len(dset2),), dtype=dtype3)
+    for name in dset2.dtype.descr:
+        name = name[0]
+        print name
+        data3[name]=dset2[name]
+    for name in dset1.dtype.descr:
+        name = name[0]
+        print name
+        data3[name]=dset1[name]
+
+    filename = 'gal_info_totlgm_dr7_v5_2'
+    print savepath+filename+'.hdf5'
+    f3 = h5py.File(savepath+filename+'.hdf5', 'w')
+    dset3 = f3.create_dataset(filename, data=data3)
 
     
 
