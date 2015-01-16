@@ -60,6 +60,8 @@ def main():
     dset3 = f3.create_dataset(filename, data=data3)
     
     
+    print "reading total stellar mass catalogue now."
+    
     filename = catalogues[2]
     hdulist2 = fits.open(filepath+filename, memmap=True)
     data2 = hdulist2[1].data
@@ -69,6 +71,8 @@ def main():
 
     dtype1 = dset1.dtype.descr
     dtype2 = dset2.dtype.descr
+    print dtype1
+    print dtype2
     
     dtype3 = dtype2+dtype1
     dtype3 = np.dtype(dtype3)
