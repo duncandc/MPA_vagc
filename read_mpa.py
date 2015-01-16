@@ -60,7 +60,6 @@ def main():
     f3 = h5py.File(savepath+filename+'.hdf5', 'w')
     dset3 = f3.create_dataset(filename, data=data3)
     
-    
     print "reading total stellar mass catalogue now."
     
     filename = catalogues[2]
@@ -68,7 +67,7 @@ def main():
     data1 = hdulist1[1].data
     print 'saving as:', savepath+filename[:-5]+'.hdf5'
     f1 = h5py.File(savepath+filename[:-5]+'.hdf5', 'w')
-    dset1 = f1.create_dataset(filename[:-5], data=data2)
+    dset1 = f1.create_dataset(filename[:-5], data=data1)
 
     dtype1 = dset1.dtype.descr
     dtype2 = dset2.dtype.descr
