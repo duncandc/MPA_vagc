@@ -20,7 +20,7 @@ def main():
     savepath = cu.get_output_path() + 'processed_data/mpa_dr7/'
     #################################################################
 
-    catalogues=['gal_totspecsfr_dr7_v5_2.fits','gal_info_dr7_v5_2.fits']
+    catalogues=['gal_totspecsfr_dr7_v5_2.fits','gal_info_dr7_v5_2.fits','totlgm_dr7_v5_2.fits']
 
     filename = catalogues[0]
     hdulist1 = fits.open(filepath+filename, memmap=True)
