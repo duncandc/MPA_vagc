@@ -19,7 +19,7 @@ def main():
   filepath = cu.get_output_path() + 'processed_data/mpa_dr7/'
   #################################################################
 
-  catalogues=['gal_totspecsfr_dr7_v5_2']
+  catalogues=['gal_totspecsfr_dr7_v5_2','gal_info_dr7_v5_2']
 
   for catalogue in catalogues:
       print catalogue
