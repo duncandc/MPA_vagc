@@ -73,6 +73,9 @@ def main():
     dtype1 = dset1.dtype.descr
     dtype2 = dset2.dtype.descr
     
+    print dtype1
+    print dtype2
+    
     dtype3 = dtype2+dtype1
     dtype3 = np.dtype(dtype3)
 
