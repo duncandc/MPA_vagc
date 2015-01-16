@@ -43,6 +43,7 @@ def main():
     dtype3 = np.dtype(dtype3)
 
     print dtype3
+    print len(dset1), len(dset2)
 
     data3 = np.recarray((len(dset2),), dtype=dtype3)
     for name in dset2.dtype.descr:
@@ -64,7 +65,7 @@ def main():
     
     filename = catalogues[2]
     hdulist1 = fits.open(filepath+filename, memmap=True)
-    data1 = hdulist2[1].data
+    data1 = hdulist1[1].data
     print 'saving as:', savepath+filename[:-5]+'.hdf5'
     f1 = h5py.File(savepath+filename[:-5]+'.hdf5', 'w')
     dset1 = f1.create_dataset(filename[:-5], data=data2)
@@ -72,13 +73,11 @@ def main():
     dtype1 = dset1.dtype.descr
     dtype2 = dset2.dtype.descr
     
-    print dtype1
-    print dtype2
-    
     dtype3 = dtype2+dtype1
     dtype3 = np.dtype(dtype3)
 
     print dtype3
+    print len(dset1), len(dset2)
 
     data3 = np.recarray((len(dset2),), dtype=dtype3)
     for name in dset2.dtype.descr:
