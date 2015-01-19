@@ -30,13 +30,16 @@ def main():
     f = open(filepath + "all_matches_dr7.dat",'r')
     highest_sn_inds = []
     
-    from progressbar import ProgressBar
-    pbar = ProgressBar().start()
-    for line in f:
-        inds = [int(entry) for entry in line.split()]
+    #from progressbar import ProgressBar
+    #pbar = ProgressBar().start()
+    for i, line in enumerate(f):
+        inds = np.array([int(entry) for entry in line.split()])
+        keep = (inds>-1)
+        inds = inds[keep]
         max_ind = inds[np.argmax(dset['SN_MEDIAN'][inds])]
         highest_sn_inds.append(max_ind)
-    pbar.finish()
+        #print i
+    #pbar.finish()
     
     unique_objects = np.unique(highest_sn_inds)
     
@@ -47,6 +50,12 @@ def main():
     from astropy.table import Table
     data = Table([unique_objects], names=['ind'])
     ascii.write(data, 'unique_objects.dat')
+    
+    #save a catalogue with only unique galaxies
+    data = dset[unique_objects]
+    filename = 'mpa_dr7_unique'
+    f1 = h5py.File(savepath+filename+'.hdf5', 'w')
+    dset1 = f1.create_dataset(filename, data=data)
 
 
 if __name__ == '__main__':
