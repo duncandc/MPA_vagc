@@ -44,12 +44,12 @@ def main():
     unique_objects = np.unique(highest_sn_inds)
     
     #save indices as numpy array
-    np.save(save_path + 'unique_objects.npz', unique_objects)
+    np.save(savepath + 'unique_objects.npz', unique_objects)
     
     #save indices as ascii table
     from astropy.table import Table
     data = Table([unique_objects], names=['ind'])
-    ascii.write(data, 'unique_objects.dat')
+    ascii.write(data, savepath + 'unique_objects.dat')
     
     #save a catalogue with only unique galaxies
     data = dset[unique_objects]
