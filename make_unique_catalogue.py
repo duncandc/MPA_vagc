@@ -27,7 +27,7 @@ def main():
     
     
     filepath = cu.get_data_path() + 'mpa_DR7_catalogue/'
-    f = open(filepath + "all_matches_dr7_test.dat",'r')
+    f = open(filepath + "all_matches_dr7.dat",'r')
     highest_sn_inds = []
     
     for i, line in enumerate(f):
