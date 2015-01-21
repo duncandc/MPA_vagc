@@ -30,16 +30,13 @@ def main():
     f = open(filepath + "all_matches_dr7_test.dat",'r')
     highest_sn_inds = []
     
-    #from progressbar import ProgressBar
-    #pbar = ProgressBar().start()
     for i, line in enumerate(f):
         inds = np.array([int(entry) for entry in line.split()])
         keep = (inds>-1)
         inds = inds[keep]
         max_ind = inds[np.argmax(dset['SN_MEDIAN'][inds])]
         highest_sn_inds.append(max_ind)
-        #print i
-    #pbar.finish()
+        print i
     
     unique_objects = np.unique(highest_sn_inds)
     
