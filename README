@@ -4,6 +4,6 @@ data available at http://www.mpa-garching.mpg.de/SDSS/DR7/
 
 I have included code to read in and process the catalogues that contain stellar masses and star formation rates.  
 
-I have alos included the code i use to make a unique catalog, choosing the observation with the highest S/N.
+I have also included the code I use to make a unique catalog, choosing the observation with the highest S/N.
 
 Note: I get 868492 unique objects, not the 818333 quoted on the above webpage.
