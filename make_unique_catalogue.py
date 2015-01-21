@@ -27,7 +27,7 @@ def main():
     
     
     filepath = cu.get_data_path() + 'mpa_DR7_catalogue/'
-    f = open(filepath + "all_matches_dr7.dat",'r')
+    f = open(filepath + "all_matches_dr7_test.dat",'r')
     highest_sn_inds = []
     
     #from progressbar import ProgressBar
@@ -44,7 +44,7 @@ def main():
     unique_objects = np.unique(highest_sn_inds)
     
     #save indices as numpy array
-    np.save(savepath + 'unique_objects.npz', unique_objects)
+    np.save(savepath + 'unique_objects', unique_objects)
     
     #save indices as ascii table
     from astropy.table import Table
@@ -52,7 +52,9 @@ def main():
     ascii.write(data, savepath + 'unique_objects.dat')
     
     #save a catalogue with only unique galaxies
-    data = dset[unique_objects]
+    inds = np.arange(0,len(dset))
+    keep = np.in1d(inds,unique_objects)
+    data = dset[keep]
     filename = 'mpa_dr7_unique'
     f1 = h5py.File(savepath+filename+'.hdf5', 'w')
     dset1 = f1.create_dataset(filename, data=data)
